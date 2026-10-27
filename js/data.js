@@ -31,6 +31,9 @@ window.EKIN_DATA = {
     { id: 'atki', name: 'Mudo lacivert atkı', v: [{ sku: 'atki', price: 1400, cur: 'TRY', img: 'assets/products/atki.webp' }] },
     { id: 'fil', name: 'Dekoratif fil ailesi', v: [{ sku: 'fil', price: 345, cur: 'TRY', img: 'assets/products/fil.webp' }] },
     { id: 'nar', name: 'Dekoratif nar seti', v: [{ sku: 'nar', price: 450, cur: 'TRY', img: 'assets/products/nar.webp' }] },
+    { id: 'bilardo', name: 'Mini bilardo oyunu', v: [{ sku: 'bilardo', price: 560, cur: 'TRY', img: 'assets/products/bilardo.webp' }] },
+    { id: 'bowling', name: 'Mini ahşap bowling oyunu', v: [{ sku: 'bowling', price: 460, cur: 'TRY', img: 'assets/products/bowling.webp' }] },
+    { id: 'corap', name: "Yeni yıl temalı 4'lü çorap", v: [{ sku: 'corap', price: 499, cur: 'TRY', img: 'assets/products/corap.webp' }] },
     {
       id: 'edenred', name: 'Edenred hediye çeki', exclusive: true, segLabel: 'Çek tutarı', v: [
         { sku: 'edenred-4000', label: '4.000 TL', price: 4000, cur: 'TRY', img: 'assets/products/edenred.webp' },
