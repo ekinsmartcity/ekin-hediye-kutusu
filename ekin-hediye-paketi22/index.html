@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hediye Paketini Oluştur · Ekin</title>
+<meta name="description" content="Ürünleri seç, kutuna ekle, paket bütçeni anında gör.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121212'/%3E%3Crect x='14.5' width='3' height='32' fill='%23FF3932'/%3E%3Crect y='11' width='32' height='3' fill='%23FF3932'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Poppins:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div>
+      <div class="eyebrow"><i></i>Ekin · Yılbaşı 2026–2027</div>
+      <h1 class="disp">Hediye paketini oluştur</h1>
+      <p class="lead">Ürünleri seç, kutuna ekle, paket bütçeni anında gör.</p>
+    </div>
+    <div class="topright">
+      <div class="tabs" role="tablist" aria-label="Görünüm">
+        <button type="button" role="tab" id="tab-build" aria-controls="view-build" aria-selected="true">Kutu oluştur</button>
+        <button type="button" role="tab" id="tab-compare" aria-controls="view-compare" aria-selected="false">Karşılaştır <span class="tcount mono" id="savedCount">0</span></button>
+      </div>
+      <label class="search" id="searchWrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span class="sr">Ürün ara</span>
+        <input type="search" id="search" placeholder="Ürün ara" autocomplete="off">
+      </label>
+    </div>
+  </header>
+
+  <!-- ============ KUTU OLUŞTUR ============ -->
+  <main id="view-build" role="tabpanel" aria-labelledby="tab-build" class="view">
+    <div class="wrap">
+      <section aria-label="Ürün kataloğu">
+        <div class="cathead">
+          <span class="lbl">Katalog</span>
+          <span class="muted small"><span id="catCount">14 ürün</span> · Görseli tutup kutuya sürükle</span>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="noResults" hidden></p>
+      </section>
+
+      <aside class="side" id="kutu" aria-label="Hediye kutusu ve bütçe">
+        <div class="boxhead">
+          <span class="lbl">Hediye kutusu <span class="muted boxmeta" id="boxMeta">· boş</span></span>
+          <span class="headbtns">
+            <button type="button" class="tbtn" id="newBox" hidden>Yeni kutu başlat</button>
+            <button type="button" class="tbtn" id="clearBox" disabled>Kutuyu boşalt</button>
+          </span>
+        </div>
+
+        <div class="gbox" id="gbox">
+          <img class="g-lid" src="assets/box/lid.webp" alt="" draggable="false">
+          <img class="g-body" src="assets/box/body.webp" alt="" draggable="false">
+          <svg class="hl" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon id="hlPoly" points=""/></svg>
+          <div class="g-open">
+            <div class="drop" id="dropMsg">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>
+              <span id="dropText">Hediyeleri buraya sürükle</span>
+            </div>
+          </div>
+          <div class="g-in" id="liner"><div class="tiles" id="tiles"></div></div>
+          <img class="g-front" src="assets/box/front.webp" alt="" draggable="false">
+        </div>
+
+        <div class="lines" id="lines"></div>
+
+        <div class="sum">
+          <div class="rate">
+            <label for="rate" class="mono">1 USD =</label>
+            <input id="rate" inputmode="decimal" autocomplete="off">
+            <span class="mono">TL</span>
+            <span class="tag" id="rateTag"></span>
+            <button type="button" class="tbtn" id="resetRate" hidden>Sunumdaki kura dön</button>
+          </div>
+          <div class="warnTxt" id="rateBad" hidden>Geçerli bir kur gir. USD ürünler hesaba katılamıyor.</div>
+
+          <div class="big">
+            <span class="k" id="ppLabel">Paket başına toplam</span>
+            <span class="v mono" id="ppValue" aria-live="polite">0,00 TL</span>
+          </div>
+          <div class="warn" id="missWarn" role="status" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>
+            <span id="missText"></span>
+          </div>
+
+          <div class="row2">
+            <div class="fld">
+              <label for="pack" class="lbl">Paket adedi</label>
+              <input id="pack" inputmode="numeric" autocomplete="off">
+            </div>
+            <div class="fld">
+              <span class="lbl" id="budgetLabel">Toplam bütçe</span>
+              <span class="budget mono" id="budgetValue" aria-live="polite">0,00 TL</span>
+            </div>
+          </div>
+          <p class="note">Toplam, girilen ürün bedelleri üzerinden hesaplanır.</p>
+
+          <div class="saveArea" id="saveArea"></div>
+
+          <div class="saved" id="savedWrap" hidden>
+            <div class="savedHead"><span class="lbl">Kaydedilen kutular</span><button type="button" class="tbtn" data-goto="compare">Karşılaştır</button></div>
+            <ul class="savedList" id="savedList"></ul>
+          </div>
+
+          <div class="acts">
+            <button type="button" class="sbtn" id="copyBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11"/><path d="M5 15V4h11"/></svg>
+              <span>Paket özetini kopyala</span>
+            </button>
+            <button type="button" class="sbtn" id="editToggle" aria-expanded="false" aria-controls="editor">
+              Fiyatları düzenle
+              <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <pre class="copyOut mono" id="copyOut" hidden></pre>
+          <div class="ed" id="editor" hidden></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ============ KARŞILAŞTIR ============ -->
+  <section id="view-compare" role="tabpanel" aria-labelledby="tab-compare" class="view" hidden>
+    <div class="cmpTop">
+      <div>
+        <span class="lbl">Kutuları karşılaştır</span>
+        <p class="muted small" id="cmpBasis"></p>
+      </div>
+      <div class="acts" style="margin-top:0">
+        <button type="button" class="sbtn" id="copyCompare">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11"/><path d="M5 15V4h11"/></svg>
+          <span>Karşılaştırmayı kopyala</span>
+        </button>
+      </div>
+    </div>
+    <div id="compareBody"></div>
+    <pre class="copyOut mono" id="copyOut2" hidden></pre>
+  </section>
+</div>
+
+<div class="mbar" id="mbar">
+  <div>
+    <div class="mk" id="mbarLabel">Paket başına toplam</div>
+    <div class="mv mono" id="mbarValue">0,00 TL</div>
+  </div>
+  <a href="#kutu">Kutuya git</a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toastText"></span><button type="button" class="tbtn light" id="toastUndo" hidden>Geri al</button></div>
+<div id="ghostLayer" aria-hidden="true"></div>
+<div class="sr" id="live" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
