@@ -20,6 +20,10 @@ window.EKIN_DATA = {
     { id: 'saklama', name: 'Ekin logolu saklama kabı', v: [{ sku: 'saklama', price: 2.27, cur: 'USD', img: 'assets/products/saklama.webp', boxImg: 'assets/products/saklama-kutu.webp' }] },
     { id: 'misir', name: 'Patlamış mısır kasesi ve patlamış mısır', v: [{ sku: 'misir', price: 500, cur: 'TRY', img: 'assets/products/misir.webp' }] },
     { id: 'cikolata', name: 'Kahve Dünyası sıcak çikolata paketi', v: [{ sku: 'cikolata', price: 250, cur: 'TRY', img: 'assets/products/cikolata.webp' }] },
+    { id: 'godiva-cello', name: 'Godiva Mini Napoliten Cello, 20 adet', v: [{ sku: 'godiva-cello', price: 525, cur: 'TRY', img: 'assets/products/godiva-cello.webp' }] },
+    { id: 'godiva-pouch', name: 'Godiva Mini Napoliten Pouch, 14 adet', v: [{ sku: 'godiva-pouch', price: 350, cur: 'TRY', img: 'assets/products/godiva-pouch.webp' }] },
+    { id: 'godiva-madlen', name: 'Godiva Finesse Belle, 20 adet sargılı madlen', v: [{ sku: 'godiva-madlen', price: 660, cur: 'TRY', img: 'assets/products/godiva-madlen.webp' }] },
+    { id: 'godiva-domes', name: 'Godiva Sütlü Fındık Krokantlı Chocolate Domes, 123 gr', v: [{ sku: 'godiva-domes', price: 350, cur: 'TRY', img: 'assets/products/godiva-domes.webp' }] },
     {
       id: 'kuruyemis', name: 'Kuruyemiş paketi', segLabel: 'Kuruyemiş seçeneği', v: [
         { sku: 'kuruyemis-3', label: '3 bölmeli ahşap kutu', price: 565, cur: 'TRY', img: 'assets/products/kuruyemis-3.webp' },
@@ -36,6 +40,8 @@ window.EKIN_DATA = {
     { id: 'corap', name: "Yeni yıl temalı 4'lü çorap", v: [{ sku: 'corap', price: 499, cur: 'TRY', img: 'assets/products/corap.webp' }] },
     {
       id: 'edenred', name: 'Edenred hediye çeki', exclusive: true, segLabel: 'Çek tutarı', v: [
+        { sku: 'edenred-2000', label: '2.000 TL', price: 2000, cur: 'TRY', img: 'assets/products/edenred.webp' },
+        { sku: 'edenred-3000', label: '3.000 TL', price: 3000, cur: 'TRY', img: 'assets/products/edenred.webp' },
         { sku: 'edenred-4000', label: '4.000 TL', price: 4000, cur: 'TRY', img: 'assets/products/edenred.webp' },
         { sku: 'edenred-5000', label: '5.000 TL', price: 5000, cur: 'TRY', img: 'assets/products/edenred.webp' }
       ]
