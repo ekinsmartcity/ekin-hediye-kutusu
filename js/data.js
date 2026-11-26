@@ -36,7 +36,6 @@ window.EKIN_DATA = {
     { id: 'bowling', name: 'Mini ahşap bowling oyunu', v: [{ sku: 'bowling', price: 460, cur: 'TRY', img: 'assets/products/bowling.webp' }] },
     {
       id: 'edenred', name: 'Edenred hediye çeki', exclusive: true, segLabel: 'Çek tutarı', v: [
-        { sku: 'edenred-2000', label: '2.000 TL', price: 2000, cur: 'TRY', img: 'assets/products/edenred.webp' },
         { sku: 'edenred-3000', label: '3.000 TL', price: 3000, cur: 'TRY', img: 'assets/products/edenred.webp' },
         { sku: 'edenred-4000', label: '4.000 TL', price: 4000, cur: 'TRY', img: 'assets/products/edenred.webp' },
         { sku: 'edenred-5000', label: '5.000 TL', price: 5000, cur: 'TRY', img: 'assets/products/edenred.webp' }
